@@ -111,8 +111,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_n,      shiftview,  	   {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_b,      shiftview,      {.i = -1 } },
     	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
-	{ MODKEY,                       XK_F10,    spawn,          {.v = downvol } },
-	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = downvol } },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = mutevol } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
