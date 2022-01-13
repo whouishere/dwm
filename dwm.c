@@ -2006,7 +2006,7 @@ void
 updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "suckless dwm, software that sucks less. ver"VERSION);
+		strcpy(stext, "suckless dwm, software that sucks less. version "VERSION);
 	drawbar(selmon);
 }
 
