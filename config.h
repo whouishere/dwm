@@ -6,17 +6,17 @@ static const unsigned int gappx     = 5;        /* gaps size between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "bitstreamverasansmono:size=12", "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
-static const char dmenufont[]       = "bitstreamverasansmono:size=12";
-//background color
+static const char *fonts[]          = { "JetBrains Mono Nerd Font:size=12:style=bold", "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=12";
+// background color
 static const char col_gray1[]       = "#222222";
-//inactive window border color
+// inactive window border color
 static const char col_gray2[]       = "#444444";
-//font color
+// font color
 static const char col_gray3[]       = "#bbbbbb";
-//current tag and current window font color
+// current tag and current window font color
 static const char col_gray4[]       = "#eeeeee";
-//Top bar second color (blue) and active window border color
+// Top bar second color (blue) and active window border color
 static const char col_cyan[]        = "#f59542";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -50,7 +50,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -63,15 +63,10 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-//sets pcmanfm as the default filemanager
-static const char *filemanager[] = { "pcmanfm", NULL };
-//sets firefox as the default web browser
+static const char *filemanager[] = { "thunar", NULL };
 static const char *webbrowser[] = { "firefox", NULL };
-//launches htop
 static const char *monitor[] = { "/usr/bin/htop", NULL };
-//sets urxvt as the default terminal
-static const char *termcmd[]  = { "urxvt", NULL };
-//volume controls
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
@@ -81,7 +76,7 @@ static char *endx[] = { "/bin/sh", "-c", "endx", "externalpipe", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = filemanager } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = webbrowser } },
 	{ MODKEY,                       XK_t,      togglebar,      {0} },
@@ -91,9 +86,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_z,	   zoom,           {0} },
+	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,	                XK_q,      killclient,     {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -108,9 +103,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_n,      shiftview,  	   {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_n,      shiftview,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_b,      shiftview,      {.i = -1 } },
-    	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
+	{ MODKEY,                       XK_F12,    spawn,          {.v = upvol   } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = downvol } },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = mutevol } },
 	TAGKEYS(                        XK_1,                      0)
